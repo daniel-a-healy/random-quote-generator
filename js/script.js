@@ -27,7 +27,9 @@ const quotes = [{quote: 'You have power over your mind - not outside events. Rea
                          you will behold him, like a great Colossus whose pedestal has been pulled away, fall \
                          of his own weight and break in pieces.', 
                  source: 'Estienne de La Boétie',
-                 year: '1576'}];
+                 citation: 'Discourse on Voluntary Servitude',
+                 year: '1576',
+                 tags: ['civil rights', 'liberty', 'politics']}];
 
 
 /***
@@ -56,9 +58,12 @@ function getRandomQuote(arrLength) {
 
 function printQuote() {
   quote = getRandomQuote(quotes.length);
+
+  // html for required quote properties
   html = `<p class="quote">${quote.quote}</p>
           <p class="source">${quote.source} `;
 
+  // check for each of the 3 optional quote properties
   if (Object.keys(quote).includes('citation')) {
      html += `<span class="citation"> ${quote.citation} </span>`;
   }
@@ -67,8 +72,12 @@ function printQuote() {
     html += `<span class="year"> ${quote.year} </span>`;
   }
 
+  if (Object.keys(quote).includes('tags')) {
+    html += `<span class="tags"> ${quote.tags} </span>`;
+  }
+
   html += '</p>'; // close source paragraph tag after checking for optional properties
-  document.getElementById('quote-box').innerHTML = html; 
+  document.getElementById('quote-box').innerHTML = html; // update quote box with generated quote HTML
 }
 
 /***
