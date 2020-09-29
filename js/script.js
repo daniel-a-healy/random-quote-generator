@@ -41,8 +41,26 @@ const quotes = [{quote: 'You have power over your mind - not outside events. Rea
 ***/
 
 function getRandomQuote(arrLength) {
-  const index = Math.floor(Math.random() * Math.floor(arrLength)); //generates random index for quotes array
+  const index = getRandomNumber(arrLength); //generates random index for quotes array
   return quotes[index];
+}
+
+function getRandomNumber(totalNums){
+  return Math.floor(Math.random() * Math.floor(totalNums));
+}
+
+/***
+ * `getRandomColor` function
+ * Gets a random color value from 0-255 (256 possible values)
+ * Returns an rgb CSS string that can be used to change a color value to the randomly generated one.
+***/
+
+function getRandomColor(){
+  const red = getRandomNumber(256);
+  const green = getRandomNumber(256);
+  const blue = getRandomNumber(256);
+
+  return `rgb(${red}, ${green}, ${blue})`
 }
 
 /***
@@ -74,8 +92,12 @@ function printQuote() {
   }
 
   html += '</p>'; // close source paragraph tag after checking for optional properties
+
+  document.body.style.backgroundColor = getRandomColor();
   document.getElementById('quote-box').innerHTML = html; // update quote box with generated quote HTML
 }
+
+
 
 /***
  * click event listener for the print quote button
