@@ -9,6 +9,9 @@ project 1 - A Random Quote Generator
 
 /*** 
  * `quotes` array 
+ * Is an array that contains quote objects. Each quote has 2 required properties: quote and source
+ * Optional properties are 'citation', 'year', and 'tags'
+ * This array is accessed by the getRandomQuote() function
 ***/
 const quotes = [{quote: 'You have power over your mind - not outside events. Realize this, and you will find strength.', 
                  source: 'Marcus Aurelius', 
@@ -29,6 +32,9 @@ const quotes = [{quote: 'You have power over your mind - not outside events. Rea
 
 /***
  * `getRandomQuote` function
+ * Takes the array length as an argument
+ * Generates a random number between 0 and arrLength - 1 and stores in variable 'index'
+ * Returns the quote object at quotes[index]
  * 
 ***/
 
@@ -42,9 +48,28 @@ function getRandomQuote(arrLength) {
 
 /***
  * `printQuote` function
+ * Grabs a random function from the quotes array, 
+ * and builds appropriate HTML for display of each property 
+ * associated with the quote object
+ * After the HTML is built, it updates the quote box with the generated HTML string
 ***/
 
+function printQuote() {
+  quote = getRandomQuote(quotes.length);
+  html = `<p class="quote">${quote.quote}</p>
+          <p class="source">${quote.source} `;
 
+  if (Object.keys(quote).includes('citation')) {
+     html += `<span class="citation"> ${quote.citation} </span>`;
+  }
+
+  if (Object.keys(quote).includes('year')) {
+    html += `<span class="year"> ${quote.year} </span>`;
+  }
+
+  html += '</p>'; // close source paragraph tag after checking for optional properties
+  document.getElementById('quote-box').innerHTML = html; 
+}
 
 /***
  * click event listener for the print quote button
