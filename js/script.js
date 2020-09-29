@@ -14,6 +14,7 @@ project 1 - A Random Quote Generator
  * This array is accessed by the getRandomQuote() function
 ***/
 
+
 const quotes = [{quote: 'You have power over your mind - not outside events. Realize this, and you will find strength.', 
                  source: 'Marcus Aurelius', 
                  citation: 'Meditations'}, 
@@ -105,3 +106,6 @@ function printQuote() {
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+setInterval(() => {
+  document.getElementById('load-quote').click(); 
+}, 10000);
