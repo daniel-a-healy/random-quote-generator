@@ -13,6 +13,7 @@ project 1 - A Random Quote Generator
  * Optional properties are 'citation', 'year', and 'tags'
  * This array is accessed by the getRandomQuote() function
 ***/
+
 const quotes = [{quote: 'You have power over your mind - not outside events. Realize this, and you will find strength.', 
                  source: 'Marcus Aurelius', 
                  citation: 'Meditations'}, 
@@ -31,7 +32,6 @@ const quotes = [{quote: 'You have power over your mind - not outside events. Rea
                  year: '1576',
                  tags: ['civil rights', 'liberty', 'politics']}];
 
-
 /***
  * `getRandomQuote` function
  * Takes the array length as an argument
@@ -44,9 +44,6 @@ function getRandomQuote(arrLength) {
   const index = Math.floor(Math.random() * Math.floor(arrLength)); //generates random index for quotes array
   return quotes[index];
 }
-
-
-
 
 /***
  * `printQuote` function
@@ -73,7 +70,7 @@ function printQuote() {
   }
 
   if (Object.keys(quote).includes('tags')) {
-    html += `<span class="tags"> ${quote.tags} </span>`;
+    html += `<br><br><span class="tags"> Tags: ${quote.tags} </span>`;
   }
 
   html += '</p>'; // close source paragraph tag after checking for optional properties
